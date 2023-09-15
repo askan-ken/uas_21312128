@@ -1,19 +1,43 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:uas_21312128/app/modules/home/bindings/home_binding.dart';
 
-class HomeController {
-  final CollectionReference _dataCollection =
-      FirebaseFirestore.instance.collection('data');
+class HomeController extends GetxController {
+  //TODO: Implement HomeController
 
-  Future<List<HomeBinding>> fetchData() async {
-    var querySnapshot = await _dataCollection.get();
-    return querySnapshot.docs.map((doc) {
-      return HomeBinding(
-        alamat: doc['alamat'],
-        nama: doc['nama'],
-        npm: doc['npm'],
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  Future<QuerySnapshot<Object?>> GetData() async {
+    CollectionReference products = firestore.collection('Askan_21312128');
+
+    return products.get();
+  }
+
+  Stream<QuerySnapshot<Object?>> streamData() {
+    CollectionReference products = firestore.collection('Askan_21312128');
+
+    return products.snapshots();
+  }
+
+  void deleteProducts(String id) {
+    DocumentReference docRef = firestore.collection("Askan_21312128").doc(id);
+
+    try {
+      Get.defaultDialog(
+        title: "info",
+        middleText: " apakah anda yakin menghapus data ini ? ",
+        onConfirm: () {
+          docRef.delete();
+          Get.back();
+        },
+        textConfirm: "Ya",
+        textCancel: "Batal",
       );
-    }).toList();
+    } catch (e) {
+      print(e);
+      Get.defaultDialog(
+        title: "terjadi kesalahan",
+        middleText: "tidak berhasil menghapus data",
+      );
+    }
   }
 }
