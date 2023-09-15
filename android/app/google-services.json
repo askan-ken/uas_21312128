@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "972318516893",
+    "project_id": "uas-21312128",
+    "storage_bucket": "uas-21312128.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972318516893:android:57d25caaa9edac2aa4d674",
+        "android_client_info": {
+          "package_name": "com.teknokrat.uas_21312128"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSr23sB_WZxDuLZ77IfKUzGSgcIvQCoFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
